@@ -7,21 +7,10 @@ const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
 
+const team = [];
+gatherTeam();
 
-
-function teamName() {
-    inquirer
-    .prompt([
-    
-    {
-        type: "input",
-        name: "teamName",
-        message: "What is the team's Name?",  
-    },
-    
-    ]);
-}
-    function gatherTeam() {
+function gatherTeam() {
     inquirer
     .prompt([
     
@@ -53,6 +42,7 @@ function teamName() {
         }
     });
 }
+
     function managerDetails() {
     inquirer
     .prompt([
@@ -79,17 +69,19 @@ function teamName() {
     }
 
     ])
+
     .then(function (data) {
         const name = data.name
-        const id = 1
+        const id = data.id
         const email = data.email
         const officeNumber = data.officeNumber
-        const teamMember = new Manager(name, id, email, officeNumber)
-        finalTeamArray.push(teamMember)
-        addTeamMembers();
+        const manager = new Manager(name, id, email, officeNumber)
+        team.push(manager);
+        gatherTeam();
     });
-
 }
+
+
     function engineerDetails() {
     inquirer
     .prompt([
@@ -101,29 +93,29 @@ function teamName() {
     },
     {
         type: "input",
-        name: "managerId",
+        name: "engineerId",
         message: "What is the Engineer's ID?",
     },
     {
         type: "input",
-        name: "managerEmail",
+        name: "engineerEmail",
         message: "What is the Engineer's Email?",
     },
     {
         type: "input",
-        name: "managerRole",
+        name: "engineerRole",
         message: "What is the Engineer's Github username?",
     
     }
     ])
     .then(function (data) {
         const name = data.name
-        const id = finalTeamArray.length + 1
+        const id = data.id
         const email = data.email
-        const github = data.github
-        const teamMember = new Engineer(name, id, email, github)
-        finalTeamArray.push(teamMember)
-        addTeamMembers()
+        const githubUser = data.githubUser
+        const engineer = new Engineer(name, id, email, githubUser)
+        team.push(engineer);
+        gatherTeam();
     });
 
 }
@@ -156,12 +148,12 @@ function teamName() {
     ])
     .then(function (data) {
         const name = data.name
-        const id = finalTeamArray.length + 1
+        const id = data.name
         const email = data.email
         const school = data.school
-        const teamMember = new Intern(name, id, email, school)
-        finalTeamArray.push(teamMember)
-        addTeamMembers()
+        const intern = new Intern(name, id, email, school)
+        team.push(intern);
+        gatherTeam();
     });
 }
 
