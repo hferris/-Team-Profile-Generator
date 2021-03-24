@@ -1,1 +1,5 @@
-# -Team-Profile-Generator
+# This project is my Team-Profile-Generator
+# Check it out here: https://hferris.github.io/-Team-Profile-Generator/
+# Check it out here: 
+# Here is the screenshot below :star_struck:
+<!-- ![Alt text](/./dist/imgs/snap.shot.png?raw=true "Screenshot") -->.
