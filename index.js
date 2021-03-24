@@ -1,11 +1,14 @@
+
+const Employee = require("./lib/employee");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/manager");
+
 const inquirer = require("inquirer");
 const fs = require('fs');
 // const renderLicenseBadge = require("./utils/generateMarkdown");  //work on
 
-const Employee = require("./lib/employee");
-const Engineer = require("./lib/engineer");
-const Intern = require("./lib/intern");
-const Manager = require("./lib/manager");
+
 
 const team = [];
 gatherTeam();
@@ -38,7 +41,7 @@ function gatherTeam() {
             internDetails();
         }
         else if (employeeRole === "Complete") {
-            giveTeam();
+            gatherTeam();
         }
     });
 }
@@ -148,7 +151,7 @@ function gatherTeam() {
     ])
     .then(function (data) {
         const name = data.name
-        const id = data.name
+        const id = data.id
         const email = data.email
         const school = data.school
         const intern = new Intern(name, id, email, school)
@@ -156,6 +159,3 @@ function gatherTeam() {
         gatherTeam();
     });
 }
-
-    
-
